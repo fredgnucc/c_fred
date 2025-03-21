@@ -3,13 +3,13 @@
 set -e
 
 # Network config
-NS_NAME="mycontainer"
+NS_NAME="router"
 VETH_HOST="veth-host"
-VETH_CONT="veth-container"
-IP_CONT="192.168.151.2/24"
+VETH_CONT="veth-router"
+IP_CONT="192.168.150.1/24"
 VXLAN_IF="vxlan0"
-VXLAN_LOCAL="10.240.0.54"
-VXLAN_REMOTE="10.240.0.55"
+VXLAN_LOCAL="10.240.0.38"
+VXLAN_REMOTE="10.240.0.39"
 
 BRIDGE="br0"
 
