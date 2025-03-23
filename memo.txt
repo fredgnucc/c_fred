@@ -1,0 +1,8 @@
+sudo bpftool net detach xdp dev ens192
+sudo rm /sys/fs/bpf/read_packet_xp
+sudo rm /sys/fs/bpf/packet_dict
+
+clang -O2 -g -target bpf -I/usr/include/x86_64-linux-gnu -c read_packet_xdp.c -o read_packet_xdp.o
+sudo bpftool prog load read_packet_xdp.o /sys/fs/bpf/read_packet_xdp type xdp
+sudo bpftool net attach xdp pinned /sys/fs/bpf/read_packet_xdp dev ens192
+sudo bpftool map pin id 4 /sys/fs/bpf/ip_count_map
