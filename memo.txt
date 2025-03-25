@@ -9,3 +9,7 @@ clang -O2 -g -target bpf -I/usr/include/x86_64-linux-gnu -c read_packet_xdp.c -o
 sudo bpftool prog load read_packet_xdp.o /sys/fs/bpf/read_packet_xdp type xdp
 sudo bpftool net attach xdp pinned /sys/fs/bpf/read_packet_xdp dev ens192
 sudo bpftool map pin id 4 /sys/fs/bpf/ip_count_map
+
+
+go mod init read_xdp
+go get github.com/cilium/ebpf
